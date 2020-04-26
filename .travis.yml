@@ -8,6 +8,11 @@ os: linux
 dist: bionic
 
 script:
+script:
+  - git clone https://github.com/louiscklaw/GithubScripts.git .github_scripts
+  - /bin/bash ./.github_scripts/travis/ci-build.sh
+
+after_success:
   - wget https://raw.githubusercontent.com/louiscklaw/travis-playlist/master/travis-build-merger/merge_if_success.sh
   - bash merge_if_success.sh | tee merge.log
 
